@@ -1,34 +1,32 @@
 {
-  "name": "thanos-snap",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-thanos-snap",
+  "version": "0.0.2",
+  "description": "React component for creating thanos snapping effect",
+  "main": "dist/bundle.js",
+  "repository": "git@github.com:drgx/react-thanos-snap.git",
+  "author": "Ryan Nixon Salim <ryan.nixon.salim@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "rollup": "^1.12.1",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-uglify": "^6.0.2"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "dependencies": {
     "chance": "^1.0.18",
     "html2canvas": "^1.0.0-rc.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-pose": "^4.0.8",
-    "react-scripts": "3.0.0"
+    "react-pose": "^4.0.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "build": "rollup -c"
   }
 }

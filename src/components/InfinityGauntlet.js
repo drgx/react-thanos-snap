@@ -15,16 +15,16 @@ const OriginalElement = posed.div({
   visible: {
     opacity: 1,
     filter: `blur(0px)`,
-    transition: { delay: 3000, duration: 2000 },
+    transition: { delay: 3500, duration: 2000 },
   },
   hidden: {
     opacity: 0,
-    transition: { duration: 100 },
+    transition: { duration: 1000 },
     filter: `blur(1px)`,
   },
 });
 
-function handleSnap(imgRef, particleRefs, setState, state, snap) {
+function handleSnap(imgRef, particleRefs, setState, snap) {
   if (!snap) {
     setState('visible');
   } else {
@@ -69,11 +69,11 @@ function InfinityGauntlet(props) {
   const wrapperRef = useRef();
   const [state, setState] = useState('visible');
   const particleRefs = useRef([...Array(canvasCount)].map(() => createRef()));
-  const zIndex = options.zIndex || 2;
+  const zIndex = (options && options.zIndex) || 2;
   const canvases = generateBlankCanvas(particleRefs, state, canvasCount, zIndex);
 
   useEffect(() => {
-    handleSnap(wrapperRef, particleRefs, setState, state, snap);
+    handleSnap(wrapperRef, particleRefs, setState, snap);
   }, [snap]);
 
   return (

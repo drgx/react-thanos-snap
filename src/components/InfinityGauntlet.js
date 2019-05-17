@@ -7,15 +7,28 @@ const canvasCount = 32;
 let imageDataArray = [];
 
 const CanvasContainer = posed.div({
-  hidden: { delayChildren: 200, staggerChildren: 35, filter: `blur(1px)` },
-  visible: { delayChildren: 200, staggerChildren: 35, filter: `blur(0px)` },
+  hidden: {
+    delayChildren: 200,
+    staggerChildren: 35,
+    filter: `blur(1px)`,
+  },
+  visible: {
+    delayChildren: 200,
+    staggerChildren: 35,
+    filter: `blur(0)`,
+  },
 });
 
 const OriginalElement = posed.div({
   visible: {
     opacity: 1,
-    filter: `blur(0px)`,
-    transition: { delay: 3500, duration: 2000 },
+    filter: `blur(0)`,
+    transition: {
+      // visible staggerChildren * numberofCanvas + dust duration + delayChildren
+      // 35*32 + 2000+200
+      delay: 3320,
+      duration: 50,
+    },
   },
   hidden: {
     opacity: 0,
@@ -24,12 +37,13 @@ const OriginalElement = posed.div({
   },
 });
 
-function handleSnap(imgRef, particleRefs, setState, snap) {
+function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility) {
+  seParticleVisibility(true);
   if (!snap) {
     setState('visible');
   } else {
     if (imageDataArray.length === 0) {
-      html2canvas(imgRef.current, { scale: 1 })
+      html2canvas(imgRef.current, { scale: 1, backgroundColor: null })
         .then((canvas) => {
           const w = canvas.width;
           const h = canvas.height;
@@ -40,7 +54,7 @@ function handleSnap(imgRef, particleRefs, setState, snap) {
           imageDataArray = createBlankImageData(data, canvasCount);
 
           for (let i = 0; i <= pixelArr.length; i += 4) {
-            //find the highest probability canvas the pixel should be in
+            //Find the highest probability canvas the pixel should be in
             let p = Math.floor((i / pixelArr.length) * canvasCount);
             let a = imageDataArray[weightedRandomDistrib(p, canvasCount)];
             a[i] = pixelArr[i];
@@ -65,23 +79,37 @@ function handleSnap(imgRef, particleRefs, setState, snap) {
 }
 
 function InfinityGauntlet(props) {
-  const { options, snap } = props;
+  const { options, snap, style = {} } = props;
   const wrapperRef = useRef();
   const [state, setState] = useState('visible');
+  const [particleVisibility, seParticleVisibility] = useState(true);
+
   const particleRefs = useRef([...Array(canvasCount)].map(() => createRef()));
   const zIndex = (options && options.zIndex) || 2;
   const canvases = generateBlankCanvas(particleRefs, state, canvasCount, zIndex);
 
   useEffect(() => {
-    handleSnap(wrapperRef, particleRefs, setState, snap);
+    handleSnap(wrapperRef, particleRefs, setState, snap, seParticleVisibility);
   }, [snap]);
 
   return (
-    <div style={{ position: 'relative' }}>
-      <OriginalElement pose={state} ref={wrapperRef} style={{ position: 'absolute', zIndex }}>
+    <div style={{ position: 'relative', ...props.style }}>
+      <OriginalElement
+        pose={state}
+        onPoseComplete={() => {
+          if (state === 'visible') {
+            seParticleVisibility(false);
+          }
+        }}
+        ref={wrapperRef}
+        style={{ position: 'absolute', zIndex }}
+      >
         {props.children}
       </OriginalElement>
-      <CanvasContainer pose={state}>{canvases}</CanvasContainer>
+
+      <CanvasContainer style={{ display: particleVisibility ? 'block' : 'none' }} key={1} pose={state}>
+        {canvases}
+      </CanvasContainer>
     </div>
   );
 }

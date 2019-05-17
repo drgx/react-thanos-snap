@@ -65,17 +65,20 @@ function handleSnap(imgRef, particleRefs, setState, state, snap) {
 }
 
 function InfinityGauntlet(props) {
+  const { options, snap } = props;
   const wrapperRef = useRef();
   const [state, setState] = useState('visible');
   const particleRefs = useRef([...Array(canvasCount)].map(() => createRef()));
-  const canvases = generateBlankCanvas(particleRefs, state, canvasCount);
+  const zIndex = options.zIndex || 2;
+  const canvases = generateBlankCanvas(particleRefs, state, canvasCount, zIndex);
+
   useEffect(() => {
-    handleSnap(wrapperRef, particleRefs, setState, state, props.snap);
-  }, [props.snap]);
+    handleSnap(wrapperRef, particleRefs, setState, state, snap);
+  }, [snap]);
 
   return (
     <div style={{ position: 'relative' }}>
-      <OriginalElement pose={state} ref={wrapperRef} style={{ position: 'absolute', zIndex: 1 }}>
+      <OriginalElement pose={state} ref={wrapperRef} style={{ position: 'absolute', zIndex }}>
         {props.children}
       </OriginalElement>
       <CanvasContainer pose={state}>{canvases}</CanvasContainer>

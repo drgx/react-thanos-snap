@@ -25,11 +25,12 @@ export function createBlankImageData(imageData, canvasCount) {
   return imageDataArray;
 }
 
-export function generateBlankCanvas(refs, state, canvasCount) {
+export function generateBlankCanvas(refs, state, canvasCount, zIndex) {
   const canvases = [];
   for (let a = 0; a < canvasCount; a++) {
     const canvasStyle = {
       position: 'absolute',
+      zIndex: zIndex - 1,
     };
 
     const dustProps = {

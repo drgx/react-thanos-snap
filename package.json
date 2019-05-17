@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chance": "^1.0.18",
+    "html2canvas": "^1.0.0-rc.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-pose": "^4.0.8",
     "react-scripts": "3.0.0"
   },
   "scripts": {

@@ -29,19 +29,20 @@ export function generateBlankCanvas(refs, state, canvasCount) {
   const canvases = [];
   for (let a = 0; a < canvasCount; a++) {
     const canvasStyle = {
-      position: 'abtolute',
+      position: 'absolute',
     };
 
     const dustProps = {
-      ref: refs.current[a],
       key: a,
       style: canvasStyle,
       pose: state,
       x: 75,
       y: -75,
       rotate: chance.integer({ min: -20, max: 20 }),
+      forwardedRef: refs.current[a],
     };
-    canvases.push(<Dust {...dustProps} />);
+
+    canvases.push(<Dust {...dustProps} ref={refs.current[a]} />);
   }
   return canvases;
 }

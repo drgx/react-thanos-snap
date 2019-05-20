@@ -27,7 +27,7 @@ const OriginalElement = posed.div({
       // visible staggerChildren * numberofCanvas + dust duration + delayChildren
       // 35*32 + 2000+200
       delay: 3320,
-      duration: 50,
+      duration: 1500,
     },
   },
   hidden: {

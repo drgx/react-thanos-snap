@@ -5,6 +5,9 @@
   Giving you the ability to easily converting your React components into dust with a single snap! <br>Inspired the amazing <a href="https://www.marvel.com/movies/avengers-endgame">Marvel Avenger</a> movies and Google <a href="https://www.google.com/search?q=thanos">Thanos</a> ester egg.</</p>
   <br/>
   <br/>
+  <a href="https://codesandbox.io/s/reactthanossnap-demo-3q171?fontsize=14">
+  <img alt="Edit react-thanos-snap demo" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
 </div>
 
 # How to use it 📦

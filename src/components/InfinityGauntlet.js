@@ -37,13 +37,13 @@ const OriginalElement = posed.div({
   },
 });
 
-function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility) {
+function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility, proxy) {
   seParticleVisibility(true);
   if (!snap) {
     setState('visible');
   } else {
     if (imageDataArray.length === 0) {
-      html2canvas(imgRef.current, { scale: 1, backgroundColor: null })
+      html2canvas(imgRef.current, { scale: 1, backgroundColor: null, proxy })
         .then((canvas) => {
           const w = canvas.width;
           const h = canvas.height;
@@ -78,6 +78,15 @@ function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility) 
   }
 }
 
+InfinityGauntlet.defaultProps = {
+  style: {},
+  snap: false,
+  options: {
+    zIndex: 2,
+    proxy: null,
+  },
+};
+
 function InfinityGauntlet(props) {
   const { options, snap, style = {} } = props;
   const wrapperRef = useRef();
@@ -89,7 +98,7 @@ function InfinityGauntlet(props) {
   const canvases = generateBlankCanvas(particleRefs, state, canvasCount, zIndex);
 
   useEffect(() => {
-    handleSnap(wrapperRef, particleRefs, setState, snap, seParticleVisibility);
+    handleSnap(wrapperRef, particleRefs, setState, snap, seParticleVisibility, options.proxy);
   }, [snap]);
 
   return (
@@ -102,11 +111,10 @@ function InfinityGauntlet(props) {
           }
         }}
         ref={wrapperRef}
-        style={{ position: 'absolute', zIndex }}
+        style={{ position: 'absolute', zIndex, width: '100%' }}
       >
         {props.children}
       </OriginalElement>
-
       <CanvasContainer style={{ display: particleVisibility ? 'block' : 'none' }} key={1} pose={state}>
         {canvases}
       </CanvasContainer>

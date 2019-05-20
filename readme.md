@@ -31,10 +31,10 @@ import InfinityGauntlet from 'react-thanos-snap';
 function App(props) {
   const [snap, setSnap] = useState(false);
   return (
-    <>
+    <div>
       <InfinityGauntlet snap={true}>{/** Put your components here **/}</InfinityGauntlet>
       <button onClick={() => setSnap(!snap)}>Snap❗️</button>
-    </>
+    </div>
   );
 }
 ```
@@ -42,7 +42,7 @@ function App(props) {
 # Limitation
 
 - The components will be wrap with the div that have `position: relative;` style on it.
-- We use `html2canvas`. This library have the limitation that can not render the image outside the origin because of the content policy restriction from the browser. if you wish to render image outside your origin, please read kindly use [proxy](http://html2canvas.hertzen.com/proxy/);
+- We use `html2canvas`. This library have the limitation that can not render the image outside the origin because of the content policy restriction from the browser. if you wish to render image outside your origin, please read kindly use [proxy](http://html2canvas.hertzen.com/proxy/);. This component have the `options.proxy` props so you can add the proxy on that props.
 
 # Credit
 
@@ -50,10 +50,10 @@ function App(props) {
 
 - The Amazing infinity gauntlet logo image for this repo is owned by [Jamie Ferrato](https://dribbble.com/shots/4595136-Infinity-Gauntlet). I own no rights to the image.
 
+# Contributing
+
+I ❤️ to have your helping on react-thanos-snap project! Feel free to PR's, add issues or give feedback! Enjoy your mighty power 😎
+
 # License
 
 MIT
-
-# Contributing
-
-I ❤️ to have your helping hand on react-thanos-snap project! Feel free to PR's, add issues or give feedback! Enjoy your mighty power 😎

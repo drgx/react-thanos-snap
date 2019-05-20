@@ -43,7 +43,7 @@ function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility, 
     setState('visible');
   } else {
     if (imageDataArray.length === 0) {
-      html2canvas(imgRef.current, { scale: 1, backgroundColor: null, proxy })
+      html2canvas(imgRef.current, { scale: 1, backgroundColor: null, proxy, useCORS: true })
         .then((canvas) => {
           const w = canvas.width;
           const h = canvas.height;

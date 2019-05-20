@@ -48,7 +48,7 @@ function App(props) {
 
 - The idea of this project also comes from [red stappler tutorial](https://redstapler.co/thanos-snap-effect-javascript-tutorial/). I porting the logic to the react and use some modification on the animation. So super thanks to the [red stapper](https://redstapler.co) for creating the great tutorial!
 
-- The Amazing infinity gauntlet logo image for this repo is owned by [Jamie Ferrato](https://dribbble.com/shots/4595136-Infinity-Gauntlet). I own no rights to the image..
+- The Amazing infinity gauntlet logo image for this repo is owned by [Jamie Ferrato](https://dribbble.com/shots/4595136-Infinity-Gauntlet). I own no rights to the image.
 
 # License
 

@@ -1,6 +1,6 @@
 {
   "name": "react-thanos-snap",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React component for creating thanos snapping effect",
   "main": "dist/bundle.js",
   "repository": "git@github.com:drgx/react-thanos-snap.git",

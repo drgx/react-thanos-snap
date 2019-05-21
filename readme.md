@@ -42,6 +42,10 @@ function App(props) {
 }
 ```
 
+## Preview
+
+![preview](assets/preview.gif)
+
 # Limitation
 
 - The components will be wrap with the div that have `position: relative;` style on it.

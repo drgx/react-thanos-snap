@@ -1,5 +1,9 @@
 <div align="center">
-  <img src="assets/snap-logo.png" width="150px">
+
+[![React Thanos Snap](assets/snap-logo.png)](.)
+
+
+
   <h1>React Thanos Snap</h1>
   <p >
   Giving you the ability to easily converting your React components into dust with a single snap! <br>Inspired the amazing <a href="https://www.marvel.com/movies/avengers-endgame">Marvel Avenger</a> movies and Google <a href="https://www.google.com/search?q=thanos">Thanos</a> ester egg.</</p>

@@ -1,6 +1,6 @@
 <div align="center">
 
-[![React Thanos Snap](assets/snap-logo.png)](.)
+<img src="assets/snap-logo.png" width="150px">
 
 
 

@@ -50,7 +50,7 @@ function handleSnap(imgRef, particleRefs, setState, snap, seParticleVisibility, 
 
           const ctx = canvas.getContext('2d');
           const data = ctx.getImageData(0, 0, w, h);
-          var pixelArr = data.data;
+          const pixelArr = data.data;
           imageDataArray = createBlankImageData(data, canvasCount);
 
           for (let i = 0; i <= pixelArr.length; i += 4) {

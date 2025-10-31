@@ -39,7 +39,7 @@ function App(props) {
   const [snap, setSnap] = useState(false);
   return (
     <div>
-      <InfinityGauntlet snap={true}>{/** Put your components here **/}</InfinityGauntlet>
+      <InfinityGauntlet snap={snap}>{/** Put your components here **/}</InfinityGauntlet>
       <button onClick={() => setSnap(!snap)}>Snap❗️</button>
     </div>
   );
